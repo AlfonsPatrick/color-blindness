@@ -1,0 +1,16 @@
+[project]
+name = "clearview"
+version = "1.0.0"
+description = "ClearView — Color Vision Accessibility Tool"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    "streamlit>=1.30.0",
+    "numpy>=1.24.0",
+    "Pillow>=10.0.0",
+]
+
+[project.scripts]
+clearview = "clearview.app:main"
