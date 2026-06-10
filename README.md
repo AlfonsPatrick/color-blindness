@@ -41,27 +41,6 @@ The simulation pipeline:
 
 Daltonize does the inverse: computes the perceptual error (what's lost in simulation) and redistributes it into the remaining visible channels.
 
-## Quick Start
-
-```bash
-# Clone the repo
-git clone <your-repo-url>
-cd color_blindness_sim
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the app
-streamlit run clearview/app.py
-```
-
-## Deploy to Streamlit Cloud
-
-1. Push this repo to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Point to `clearview/app.py` as the main file
-4. Deploy!
-
 ## File Structure
 
 ```
