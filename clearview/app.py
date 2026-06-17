@@ -431,17 +431,25 @@ def render_home():
 
     col_l, col_c, col_r = st.columns([1, 3, 1])
     with col_c:
-        if LOGO_WHITE_PATH.exists() or LOGO_PATH.exists():
-            logo_cols = st.columns([1, 1, 1])
-            with logo_cols[1]:
-                st.image(logo_white_image, use_container_width=True)
-                
-        st.markdown(
-            '<p class="hero-title" style="text-align:center; font-size:3.2rem;">'
-            "ClearView"
-            "</p>",
-            unsafe_allow_html=True,
-        )
+        if LOGO_WHITE_PATH.exists():
+            import base64
+            with open(LOGO_WHITE_PATH, "rb") as f:
+                logo_b64 = base64.b64encode(f.read()).decode()
+            logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height:3.6rem; vertical-align:middle; margin-right:16px; margin-bottom:8px;">'
+            st.markdown(
+                f'<div style="text-align:center; margin-bottom:12px;">'
+                f'{logo_html}'
+                f'<span class="hero-title" style="font-size:3.2rem; vertical-align:middle;">ClearView</span>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+        else:
+            st.markdown(
+                '<p class="hero-title" style="text-align:center; font-size:3.2rem;">'
+                "ClearView"
+                "</p>",
+                unsafe_allow_html=True,
+            )
         st.markdown(
             '<p class="hero-subtitle" style="text-align:center; font-size:1.2rem;">'
             "See the world through different eyes"
