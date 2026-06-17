@@ -27,9 +27,13 @@ from clearview.recolor import daltonize
 # Page config
 # ──────────────────────────────────────────────
 
+# Load logo for page config
+LOGO_PATH = Path(__file__).parent / "logo.png"
+logo_image = Image.open(LOGO_PATH) if LOGO_PATH.exists() else "👁️"
+
 st.set_page_config(
     page_title="ClearView — Color Vision Accessibility Tool",
-    page_icon="👁️",
+    page_icon=logo_image,
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -425,6 +429,11 @@ def render_home():
 
     col_l, col_c, col_r = st.columns([1, 3, 1])
     with col_c:
+        if LOGO_PATH.exists():
+            logo_cols = st.columns([1, 1, 1])
+            with logo_cols[1]:
+                st.image(logo_image, use_container_width=True)
+                
         st.markdown(
             '<p class="hero-title" style="text-align:center; font-size:3.2rem;">'
             "ClearView"
